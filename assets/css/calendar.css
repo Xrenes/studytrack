@@ -1,0 +1,305 @@
+/* ============================================
+   StudyTrack - Calendar Styles
+   Calendar Grid & Event Display
+   ============================================ */
+
+/* === Calendar Header === */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  position: sticky;
+  top: 0;
+  background: var(--bg-primary);
+  z-index: var(--z-sticky);
+}
+
+.calendar-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+}
+
+.add-event-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+}
+
+.add-event-btn:hover {
+  background: var(--brand-blue-hover);
+  transform: scale(1.05);
+}
+
+/* === Calendar Container === */
+.calendar-container {
+  padding: var(--spacing-md);
+}
+
+/* === Month Section === */
+.month-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.month-label {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  color: var(--text-primary);
+}
+
+/* === Weekday Headers (Desktop only) === */
+.weekday-header {
+  display: none;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding: 0 var(--spacing-sm);
+}
+
+.weekday-header span {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+/* === Calendar Grid === */
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* === Date Cell === */
+.date-cell {
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--bg-tertiary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.date-cell:hover {
+  background: var(--bg-tertiary);
+}
+
+.date-cell.empty {
+  opacity: 0.3;
+  cursor: default;
+  background: var(--bg-primary);
+}
+
+.date-cell.empty:hover {
+  background: var(--bg-primary);
+}
+
+/* Date Number */
+.date-number {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  min-width: 40px;
+  text-align: center;
+}
+
+.date-cell.today .date-number {
+  background: var(--brand-blue);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-cell.selected .date-number {
+  background: rgba(43, 127, 214, 0.3);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-cell.has-events {
+  border-left: 3px solid var(--brand-blue);
+}
+
+/* Event Indicators */
+.event-indicators {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1;
+}
+
+.event-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+}
+
+.event-dot.notice { background: var(--color-notice); }
+.event-dot.assignment { background: var(--color-assignment); }
+.event-dot.exam { background: var(--color-exam); }
+.event-dot.presentation { background: var(--color-presentation); }
+.event-dot.meeting { background: var(--color-meeting); }
+.event-dot.other { background: var(--color-other); }
+
+.event-count {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-left: 4px;
+}
+
+/* Event Previews (Mobile) */
+.event-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: var(--spacing-xs);
+  width: 100%;
+}
+
+.event-preview-item {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  border-left: 2px solid;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-preview-item.notice { border-left-color: var(--color-notice); }
+.event-preview-item.assignment { border-left-color: var(--color-assignment); }
+.event-preview-item.exam { border-left-color: var(--color-exam); }
+.event-preview-item.presentation { border-left-color: var(--color-presentation); }
+.event-preview-item.meeting { border-left-color: var(--color-meeting); }
+.event-preview-item.other { border-left-color: var(--color-other); }
+
+/* === Tablet Layout === */
+@media (min-width: 768px) {
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .date-cell {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-md);
+    border-bottom: none;
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    min-height: 100px;
+  }
+  
+  .date-number {
+    font-size: var(--font-size-xl);
+  }
+  
+  .event-indicators {
+    margin-top: var(--spacing-sm);
+  }
+  
+  .event-preview {
+    display: none;
+  }
+}
+
+/* === Desktop Layout === */
+@media (min-width: 1024px) {
+  .weekday-header {
+    display: grid;
+  }
+  
+  .calendar-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .date-cell {
+    min-height: 120px;
+    padding: var(--spacing-md);
+  }
+  
+  .date-number {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .date-cell.today .date-number,
+  .date-cell.selected .date-number {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .event-indicators {
+    flex-wrap: nowrap;
+  }
+  
+  .event-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* === Loading State === */
+.calendar-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  color: var(--text-tertiary);
+  gap: var(--spacing-md);
+}
+
+/* === Empty State === */
+.calendar-empty {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--text-tertiary);
+}
+
+.calendar-empty svg {
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.3;
+}
+
+.calendar-empty h3 {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.calendar-empty p {
+  font-size: var(--font-size-sm);
+}

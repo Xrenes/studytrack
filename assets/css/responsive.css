@@ -1,0 +1,186 @@
+/* ============================================
+   StudyTrack - Responsive Layout Styles
+   Mobile-First Approach
+   ============================================ */
+
+/* === Base Mobile Styles (< 768px) === */
+
+/* Main Content Area */
+.main-content {
+  padding: var(--spacing-md);
+  padding-bottom: 80px; /* Space for bottom nav */
+  min-height: 100vh;
+}
+
+/* === Bottom Navigation (Mobile & Tablet) === */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--bg-tertiary);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  z-index: var(--z-fixed);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+  min-width: 60px;
+  font-size: var(--font-size-sm);
+  gap: 4px;
+}
+
+.nav-item svg, .nav-item .icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.nav-item.active {
+  color: var(--brand-blue);
+}
+
+.nav-item:hover {
+  color: var(--brand-blue-hover);
+}
+
+/* === Tablet Styles (768px - 1023px) === */
+@media (min-width: 768px) {
+  .main-content {
+    padding: var(--spacing-lg);
+    padding-bottom: 80px;
+  }
+  
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+  
+  /* Calendar grid adjustments */
+  .calendar-grid {
+    gap: var(--spacing-md);
+  }
+  
+  /* Card layouts */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+/* === Desktop Styles (1024px+) === */
+@media (min-width: 1024px) {
+  /* Hide bottom navigation */
+  .bottom-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--spacing-xl) 0;
+    border-top: none;
+    border-right: 1px solid var(--bg-tertiary);
+  }
+  
+  .nav-item {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    gap: var(--spacing-md);
+  }
+  
+  .nav-item span {
+    display: inline;
+  }
+  
+  /* Adjust main content for side nav */
+  .main-content {
+    margin-left: 250px;
+    padding: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+  
+  /* Calendar grid - full 7-day week */
+  .calendar-grid {
+    gap: var(--spacing-lg);
+  }
+  
+  /* Card layouts */
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Modals wider on desktop */
+  .modal-content {
+    max-width: 600px;
+  }
+}
+
+/* === Large Desktop (1440px+) === */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  .main-content {
+    padding: var(--spacing-2xl);
+  }
+  
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* === Touch Device Optimizations === */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets */
+  .btn, button, a.btn {
+    min-height: 48px;
+    padding: 14px 24px;
+  }
+  
+  input, textarea, select {
+    min-height: 48px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .nav-item {
+    min-width: 70px;
+    min-height: 60px;
+  }
+}
+
+/* === Print Styles === */
+@media print {
+  .bottom-nav,
+  .nav-item,
+  .btn,
+  button {
+    display: none !important;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}

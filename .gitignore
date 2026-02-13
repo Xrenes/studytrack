@@ -1,0 +1,54 @@
+# Environment Configuration
+.env
+.env.local
+.env.production
+
+# Logs
+logs/
+*.log
+error_log
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Database backups
+*.sql.gz
+*.sql.backup
+backups/
+
+# Uploaded files (if you add upload functionality later)
+uploads/
+temp/
+
+# Composer (if you add it later)
+/vendor/
+composer.phar
+
+# Node modules (if you add build tools later)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Setup files (after first deployment)
+setup-once.php
+DATABASE_SETUP_NEEDED.txt
+
+# Test files
+test-api.html
+production-check.php
+
+# Cache
+cache/
+*.cache
