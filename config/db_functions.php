@@ -3,8 +3,7 @@
  * Database Functions - Replace dummy_data.php
  * All database query functions for StudyTrack
  */
-
-require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/Database.php';
 
 // ============================================
 // USER FUNCTIONS
